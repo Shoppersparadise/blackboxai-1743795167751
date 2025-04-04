@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation | ActivityBook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- QR Code Generator Library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header (Consistent with other pages) -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-ticket-alt text-2xl text-blue-600"></i>
+                <h1 class="text-2xl font-bold text-gray-800">ActivityBook</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="category.html" class="text-gray-600 hover:text-blue-600">Activities</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">My Bookings</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">Profile</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <!-- Confirmation Header -->
+            <div class="bg-green-100 p-6 text-center">
+                <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-3xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-green-800 mb-2">Booking Confirmed!</h1>
+                <p class="text-lg text-green-700">Your tickets have been successfully booked</p>
+            </div>
+
+            <!-- Booking Details -->
+            <div class="p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Activity Info -->
+                    <div class="md:w-2/3">
+                        <h2 class="text-2xl font-bold mb-4">Extreme Adventure Park</h2>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600">4.5 (1,234 reviews)</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <p class="text-sm text-gray-500">Date</p>
+                                <p class="font-medium">Sat, 15 Jul 2023</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Time</p>
+                                <p class="font-medium">10:00 AM - 6:00 PM</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Location</p>
+                                <p class="font-medium">123 Adventure Lane, Mumbai</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Booking ID</p>
+                                <p class="font-medium">BMS-ADV7X9P2Q4R</p>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Details -->
+                        <div class="border-t border-gray-200 pt-4 mb-6">
+                            <h3 class="text-lg font-semibold mb-3">Ticket Details</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="font-medium">General Admission</p>
+                                        <p class="text-sm text-gray-600">Adult (x1)</p>
+                                    </div>
+                                    <p class="font-medium">₹1,299</p>
+                                </div>
+                                <!-- Additional tickets would go here -->
+                            </div>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="font-medium">₹1,299</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Taxes & Fees</span>
+                                <span class="font-medium">₹194.85</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-bold pt-2 border-t border-gray-200">
+                                <span>Total Paid</span>
+                                <span>₹1,493.85</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div class="md:w-1/3 flex flex-col items-center">
+                        <div id="qrcode" class="w-48 h-48 mb-4"></div>
+                        <p class="text-sm text-gray-600 mb-4 text-center">Scan this QR code at the venue for entry</p>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 mb-4">
+                            <i class="fas fa-download mr-2"></i> Download Ticket
+                        </button>
+                        <button class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-share-alt mr-2"></i> Share Booking
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="border-t border-gray-200 mt-8 pt-6">
+                    <h3 class="text-lg font-semibold mb-3">What's Next?</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>You'll receive a confirmation email with your booking details</li>
+                        <li>Present your QR code at the venue for entry</li>
+                        <li>Arrive at least 30 minutes before your scheduled time</li>
+                        <li>Carry a valid photo ID for verification</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-gray-50 px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-gray-600 mb-2 sm:mb-0">Need help with your booking?</p>
+                <button class="bg-white border border-blue-600 text-blue-600 px-6 py-2 rounded-md hover:bg-blue-50">
+                    Contact Support
+                </button>
+            </div>
+        </div>
+
+        <!-- Explore More -->
+        <div class="max-w-3xl mx-auto mt-12">
+            <h2 class="text-2xl font-bold mb-6">Explore More Activities</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Activity Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="Theme Park" 
+                         class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Water Park</h3>
+                        <p class="text-gray-600 text-sm mb-3">Cool off with thrilling water slides</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">From ₹999</span>
+                            <a href="event-details.html" class="text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                                View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- More activity cards would go here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Consistent with other pages) -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ActivityBook</h3>
+                    <p class="text-gray-400">Your one-stop destination for booking exciting activities and experiences.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="category.html" class="text-gray-400 hover:text-white">Activities</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">My Bookings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 ActivityBook. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Generate QR Code
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrData = {
+                bookingId: "BMS-ADV7X9P2Q4R",
+                activity: "Extreme Adventure Park",
+                date: "2023-07-15",
+                tickets: [
+                    { type: "General Admission", quantity: 1, price: 1299 }
+                ],
+                total: 1493.85
+            };
+            
+            new QRCode(document.getElementById("qrcode"), {
+                text: JSON.stringify(qrData),
+                width: 180,
+                height: 180,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        });
+    </script>
+</body>
+</html>
