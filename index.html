@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActivityBook - Book Activities Like Never Before</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .carousel-item {
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel-item.hidden {
+            display: none;
+            opacity: 0;
+        }
+        .carousel-item.active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-ticket-alt text-2xl text-blue-600"></i>
+                <h1 class="text-2xl font-bold text-gray-800">ActivityBook</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-blue-600 font-medium">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">Activities</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">My Bookings</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">Profile</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Carousel -->
+        <section class="relative h-96 overflow-hidden">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1549608276-5786777e6587?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                     alt="Amusement Park" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h2 class="text-4xl font-bold mb-4">Discover Amazing Activities</h2>
+                        <p class="text-xl mb-6">Book your next adventure with ease</p>
+                        <button class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 text-lg">
+                            Explore Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional carousel items would go here -->
+        </section>
+
+        <!-- Categories Section -->
+        <section class="container mx-auto px-4 py-12">
+            <h2 class="text-3xl font-bold text-center mb-10">Browse Categories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Category Cards -->
+                <a href="#" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="Amusement Park" 
+                         class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Amusement Park</h3>
+                        <p class="text-gray-600 text-sm">20+ options</p>
+                    </div>
+                </a>
+                <!-- More category cards would go here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ActivityBook</h3>
+                    <p class="text-gray-400">Your one-stop destination for booking exciting activities and experiences.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Activities</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">My Bookings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 ActivityBook. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.carousel-item');
+            let currentItem = 0;
+            
+            function showItem(index) {
+                items.forEach(item => item.classList.add('hidden'));
+                items[index].classList.remove('hidden');
+                items[index].classList.add('active');
+            }
+            
+            setInterval(() => {
+                currentItem = (currentItem + 1) % items.length;
+                showItem(currentItem);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
